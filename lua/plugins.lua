@@ -104,7 +104,7 @@ require("lazy").setup({
   -- WhichKey & related keymaps
   require('plugin.whichkey'),
   -- LSP
-  require 'config/lsp',
+  require('plugin/lsp'),
   -- Autocompletion
   require 'config/nvim-cmp',
   -- file finder
