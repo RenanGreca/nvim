@@ -170,6 +170,15 @@ local leaderopts = {
     mode = "n",
     prefix = "<leader>",
 }
+local mappings = {
+    ["g"] = {
+        D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Go to declaration" },
+        d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Go to definition" },
+    }
+}
+local opts = {
+    mode = "n"
+}
 
 local vleader = {
     ["/"] = { "<Plug>(comment_toggle_linewise_visual)", "Comment toggle linewise (visual)" },
@@ -193,7 +202,8 @@ local vmappings = {
 local vopts = {
     mode = "v"
 }
-
+  vim.api.nvim_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", { noremap = true, silent = true })
+  vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
 
 local config = function()
     local wk = require('which-key')
@@ -210,6 +220,7 @@ local config = function()
     })
     wk.register(leader, leaderopts)
     wk.register(vleader, vleaderopts)
+    wk.register(mappings, opts)
     wk.register(vmappings, vopts)
 end
 

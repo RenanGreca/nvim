@@ -123,6 +123,7 @@ require("lazy").setup({
   require('plugin.markdown'),
   require('plugin.neotest'),
   require('plugin.wilder'),
+  require('plugin.tabset'),
 },
 -- ! what is the second parameter?
 {})

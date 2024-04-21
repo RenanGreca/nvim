@@ -43,6 +43,8 @@ vim.keymap.set({"n","v"}, "[", "{")
 vim.keymap.set({"n","v"}, "}", "]")
 vim.keymap.set({"n","v"}, "]", "}")
 
+
+
 -- Shortcut for nvim-tree
 -- vim.api.nvim_set_keymap("n", "<C-h>", ":NvimTreeToggle<cr>", {silent = true, noremap = true})  
 -- vim.keymap.set("n", "l", edit_or_open,          "Edit Or Open")
