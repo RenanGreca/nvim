@@ -3,7 +3,7 @@
 -- :help nvim.o
 -- :help nvim.opt
 
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "120"
 vim.opt.textwidth = 120
 vim.opt.wrap = true
 

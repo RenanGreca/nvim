@@ -104,15 +104,16 @@ require("lazy").setup({
   -- WhichKey & related keymaps
   require('plugin.whichkey'),
   -- LSP
-  require('plugin/lsp'),
+  require('plugin.lsp'),
   -- Autocompletion
-  require 'config/nvim-cmp',
+  require 'config.nvim-cmp',
   -- file finder
-  require('plugin/telescope'),
+  require('plugin.telescope'),
   -- file navigator
-  require('config/nvim-tree'),
+  require('config.nvim-tree'),
   -- GitHub copilot
   -- require('config/copilot'),
+  -- require('plugin.supermaven'),
   -- code autocompletion
   require('plugin.coc'),
 

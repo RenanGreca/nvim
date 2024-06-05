@@ -43,6 +43,9 @@ vim.keymap.set({"n","v"}, "[", "{")
 vim.keymap.set({"n","v"}, "}", "]")
 vim.keymap.set({"n","v"}, "]", "}")
 
+-- Swap behavior of p and P
+vim.keymap.set("v", "p", "P")
+vim.keymap.set("v", "P", "p")
 
 
 -- Shortcut for nvim-tree

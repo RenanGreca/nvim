@@ -15,6 +15,7 @@ return {
           end,
           "Toggle checkboxes"
         },
+        c = { [[a- [ ] ]], "Checkbox" }
       },
     }, { prefix = "<leader>" })
     -- leader.vmappings["m"] = leader.mappings["m"]

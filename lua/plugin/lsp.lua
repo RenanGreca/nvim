@@ -5,7 +5,7 @@
 -- local util = require'lspconfig/util'
 
 local on_attach = function(client, bufnr)
-  require'lsp_signature'.on_attach({
+  require 'lsp_signature'.on_attach({
     bind = true,
     floating_window = true,
     handler_opts = {
@@ -182,6 +182,7 @@ return {
     "jose-elias-alvarez/typescript.nvim",
 
     "mrcjkb/rustaceanvim",
+    "ray-x/lsp_signature.nvim",
   },
   config = config,
   opts = {
