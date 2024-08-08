@@ -152,6 +152,10 @@ local leader = {
         ["<left>"] = { ":bprev<cr>", Hint(icons.ui.Buffer, "Previous buffer") },
         ["<right>"] = { ":bnext<cr>", Hint(icons.ui.Buffer, "Next buffer") },
     },
+    ["F"] = {
+      name = " 󰉡 Format",
+      j = { "VggG:'<,'>!jq<cr>", "  JSON"}
+    },
     ['J'] = { ":m +1<cr>", "  Move line down"},
     ['K'] = { ":m -2<cr>", "  Move line up"},
     ["<Tab>"] = {

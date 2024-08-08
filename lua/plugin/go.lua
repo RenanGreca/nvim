@@ -6,7 +6,12 @@ return {
     "nvim-treesitter/nvim-treesitter",
   },
   config = function()
-    require("go").setup()
+    require("go").setup({
+      lsp_codelens = false,
+      lsp_inlay_ints = {
+        enabled = false,
+      },
+    })
     vim.keymap.set('n', 'K', ':GoDoc<cr>')
   end,
   event = {"CmdlineEnter"},

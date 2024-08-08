@@ -40,17 +40,19 @@ local on_attach = function(client, bufnr)
   -- vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
 end
 
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.foldingRange = {
-  dynamicRegistration = false,
-  lineFoldingOnly = true
-}
-
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.completion.completionItem.resolveSupport = {
-  properties = {'documentation', 'detail', 'additionalTextEdits',}
-}
+local capabilitiesfn = function()
+  local capabilities = require('cmp_nvim_lsp').default_capabilities()
+  capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true
+  }
+  capabilities.textDocument.completion.completionItem.snippetSupport = true
+  capabilities.textDocument.completion.completionItem.resolveSupport = {
+    properties = {'documentation', 'detail', 'additionalTextEdits',}
+  }
+  -- capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
+  return capabilities
+end
 
 local config = function ()
   require("mason").setup()
@@ -58,6 +60,7 @@ local config = function ()
 
   local nvim_lsp = require'lspconfig'
   local util = require 'lspconfig.util'
+  local capabilities = capabilitiesfn()
 
   nvim_lsp.lua_ls.setup({
     on_attach = on_attach,
@@ -109,7 +112,7 @@ local config = function ()
     filetypes = { 'typescript', 'javascript' }
   })
 
-  nvim_lsp["sourcekit"].setup({
+  nvim_lsp.sourcekit.setup({
     on_attach = on_attach,
     capabilities = capabilities,
     cmd = {
@@ -151,6 +154,12 @@ local config = function ()
     on_attach = on_attach,
     capabilities = capabilities,
     filetypes = { 'markdown' }
+  })
+
+  nvim_lsp.pylsp.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = { 'python' }
   })
 
   -- nvim_lsp.css_lsp.setup({
