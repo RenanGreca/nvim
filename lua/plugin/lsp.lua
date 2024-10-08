@@ -58,7 +58,7 @@ local config = function ()
   require("mason").setup()
   require("mason-lspconfig").setup({})
 
-  local nvim_lsp = require'lspconfig'
+  local nvim_lsp = require 'lspconfig'
   local util = require 'lspconfig.util'
   local capabilities = capabilitiesfn()
 
@@ -156,8 +156,22 @@ local config = function ()
     filetypes = { 'markdown' }
   })
 
+  -- nvim_lsp.pylsp.setup_nvim_cmp({
+  --   preselect = 'none',
+  --   completion = {
+  --     completeopt = 'menu,menuone,noinsert,noselect'
+  --   },
+  -- })
   nvim_lsp.pylsp.setup({
     on_attach = on_attach,
+    settings = {
+      pylsp = {
+        plugins = {
+          pylsp_mypy = { enabled = true },
+          jedi_completion = { fuzzy = true },
+        },
+      },
+    },
     capabilities = capabilities,
     filetypes = { 'python' }
   })
