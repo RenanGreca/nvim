@@ -86,4 +86,9 @@ vim.keymap.set('n', '<S-Tab>', '<<', {
 --   desc = 'Autoindent entire file',
 --   silent = true
 -- })
---
+
+-- Navigation keymaps
+vim.keymap.set('n', 'gr', ":po<CR>", {
+  desc = 'Return to previous location',
+  silent = true
+})

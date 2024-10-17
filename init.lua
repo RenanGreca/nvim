@@ -4,6 +4,8 @@ require('keymaps')
 require('options')
 require('autocmds')
 
+vim.g.python3_host_prog = '/Users/renangreca/.pyenv/shims/python'
+
 if vim.g.vscode then
   -- VSCode extension
   require('plugins.vscodecolors')

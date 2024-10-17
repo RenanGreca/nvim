@@ -162,19 +162,25 @@ local config = function ()
   --     completeopt = 'menu,menuone,noinsert,noselect'
   --   },
   -- })
-  nvim_lsp.pylsp.setup({
+  nvim_lsp.pyright.setup({
     on_attach = on_attach,
-    settings = {
-      pylsp = {
-        plugins = {
-          pylsp_mypy = { enabled = true },
-          jedi_completion = { fuzzy = true },
-        },
-      },
-    },
     capabilities = capabilities,
     filetypes = { 'python' }
   })
+
+  -- nvim_lsp.pylsp.setup({
+  --   on_attach = on_attach,
+  --   settings = {
+  --     pylsp = {
+  --       plugins = {
+  --         pylsp_mypy = { enabled = true },
+  --         jedi_completion = { fuzzy = true },
+  --       },
+  --     },
+  --   },
+  --   capabilities = capabilities,
+  --   filetypes = { 'python' }
+  -- })
 
   -- nvim_lsp.css_lsp.setup({
   --   on_attach = on_attach,
