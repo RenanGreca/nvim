@@ -15,15 +15,19 @@ local function config()
   local builtin = require "telescope.builtin"
 
   -- vim.keymap.set('n', '<Leader>f', builtin.find_files, opts('Telescope', 'Find files'))
+  -- local keymaps = {
+  --   ["f"] = {
+  --       builtin.find_files,
+  --       Hint(require('icons').ui.FindFile, "Find File"),
+  --     },
+  -- }
   local keymaps = {
-    ["f"] = {
-        builtin.find_files,
-        Hint(require('icons').ui.FindFile, "Find File"),
-      },
+    { "<leader>f", builtin.find_files, desc = " 󰈞 Find File" },
   }
 
   local wk = require('which-key')
-  wk.register(keymaps, {prefix = "<leader>" })
+  wk.add(keymaps)
+  -- wk.register(keymaps, {prefix = "<leader>" })
 
 end
 
