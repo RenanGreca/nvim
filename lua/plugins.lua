@@ -26,8 +26,13 @@ end
 
 require("lazy").setup({
   -- Theme
-  -- require 'config.onedark',
+  -- Default to catppucin.
+  -- Install others for different situations (see theme.lua)
   require 'config.catppuccin',
+  'Mofiqul/vscode.nvim',
+  'navarasu/onedark.nvim',
+  '2giosangmitom/nightfall.nvim',
+  'arzg/vim-colors-xcode',
 
   -- Git
   -- ! What do these do?

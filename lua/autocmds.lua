@@ -32,3 +32,4 @@ vim.api.nvim_create_autocmd("BufWritePost", {
   end,
   group = format_python_group
 })
+
