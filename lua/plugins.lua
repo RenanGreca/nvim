@@ -126,7 +126,7 @@ require("lazy").setup({
   require('plugin.go'),
   require('plugin.rust'),
   require('plugin.pkl'),
-  require('plugin.obsidian'),
+  -- require('plugin.obsidian'),
   require('plugin.markdown'),
   require('plugin.neotest'),
   -- require('plugin.wilder'),

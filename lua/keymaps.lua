@@ -87,8 +87,3 @@ vim.keymap.set('n', '<S-Tab>', '<<', {
 --   silent = true
 -- })
 
--- Navigation keymaps
-vim.keymap.set('n', 'gr', ":po<CR>", {
-  desc = 'Return to previous location',
-  silent = true
-})
