@@ -3,12 +3,13 @@ local autothemes = vim.api.nvim_create_augroup('AutoThemes', {})
 
 local languages = {
   js = "vscode",
+  json = "vscode",
   css = "vscode",
   go = "catppuccin-mocha",
   templ = "catppuccin-mocha",
   swift = "xcodedark",
   py = "onedark",
-  lua = "vim",
+  lua = "onedark",
 }
 
 for lang, theme in pairs(languages) do
