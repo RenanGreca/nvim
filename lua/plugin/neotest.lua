@@ -11,20 +11,6 @@ local function config()
   })
 
   local wk = require('which-key')
-  -- wk.register({
-  --   ["t"] = {
-  --     name = " 󰂓 Neotest",
-  --     a = { "<cmd>:Neotest attach<cr>", " 󱘖 Attach"},
-  --     r = { "<cmd>:NeotestPlaywrightRefresh<cr>", " 󰴂 Playwright Refresh"},
-  --     t = { "<cmd>:Neotest run<cr>", "  Run"},
-  --     q = { "<cmd>:Neotest stop<cr>", "  Stop"},
-  --     s = { "<cmd>:Neotest summary<cr>", " 󰙅 Summary"},
-  --     o = { "<cmd>:Neotest output<cr>", " 󰆍 Output pop-up"},
-  --     O = { "<cmd>:Neotest output-panel<cr>", " 󱂩 Output panel"},
-  --     j = { "<cmd>:Neotest jump prev<cr>", " 󰞕 Previous test"},
-  --     k = { "<cmd>:Neotest jump next<cr>", " 󰞒 Next test"}
-  --   }
-  -- }, { prefix = "<leader>" })
   local keymaps = {
     { "<leader>t", group = " 󰂓 Neotest" },
     { "<leader>tO", "<cmd>:Neotest output-panel<cr>", desc = " 󱂩 Output panel" },

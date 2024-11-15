@@ -60,7 +60,6 @@ require("lazy").setup({
     opts = {}
   },
 
-  
   {
     -- Configures the statusline (above the commandline)
     'nvim-lualine/lualine.nvim',
@@ -131,7 +130,8 @@ require("lazy").setup({
   require('plugin.neotest'),
   -- require('plugin.wilder'),
   require('plugin.tabset'),
-  require('plugin.harpoon')
+  require('plugin.harpoon'),
+  require('plugin.dbtpal'),
 },
 -- ! what is the second parameter?
 {})
