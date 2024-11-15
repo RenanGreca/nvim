@@ -22,7 +22,7 @@ local function config()
   --     },
   -- }
   local keymaps = {
-    { "<leader>f", builtin.find_files, desc = " 󰈞 Find File" },
+    { "<leader>f", builtin.find_files, desc = "Find File", icon = "󰈞" },
   }
 
   local wk = require('which-key')

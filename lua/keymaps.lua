@@ -13,9 +13,9 @@ if vim.g.vscode then
   vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
   vim.keymap.set({"n", "v"}, "<C-a>", [[:%y+<CR>]])
 else
-  vim.keymap.set({"n", "v"}, "<leader>y", [["+y]], {
-    desc = 'Copy to system clipboard',
-  })
+  -- vim.keymap.set({"n", "v"}, "<leader>y", [["+y]], {
+  --   desc = 'Copy to system clipboard',
+  -- })
   vim.keymap.set({"n", "v"}, "<C-a>", [[:%y+<CR>]], {
     desc = 'Copy entire file contents to system clipboard',
   })

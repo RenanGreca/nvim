@@ -28,7 +28,7 @@ return { 'ThePrimeagen/harpoon',
         -- }
         -- }
         local keymaps = {
-            { "<leader>H", group = "Harpoon" },
+            { "<leader>H", group = "Harpoon", icon = "󱡅" },
             { "<leader>H0", "<cmd>lua require('harpoon.ui').nav_file(10)<cr>", desc = "File 10" },
             { "<leader>H1", "<cmd>lua require('harpoon.ui').nav_file(1)<cr>", desc = "File 1" },
             { "<leader>H2", "<cmd>lua require('harpoon.ui').nav_file(2)<cr>", desc = "File 2" },

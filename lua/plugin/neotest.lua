@@ -12,7 +12,7 @@ local function config()
 
   local wk = require('which-key')
   local keymaps = {
-    { "<leader>t", group = " 󰂓 Neotest" },
+    { "<leader>t", group = "Neotest", icon = "󰂓" },
     { "<leader>tO", "<cmd>:Neotest output-panel<cr>", desc = " 󱂩 Output panel" },
     { "<leader>ta", "<cmd>:Neotest attach<cr>", desc = " 󱘖 Attach" },
     { "<leader>tj", "<cmd>:Neotest jump prev<cr>", desc = " 󰞕 Previous test" },

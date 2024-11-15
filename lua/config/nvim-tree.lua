@@ -37,7 +37,7 @@ local function config()
     --     },
     -- }
     local keymaps = {
-      { "<leader>e", api.tree.toggle, desc = "  Tree toggle" },
+      { "<leader>e", api.tree.toggle, desc = "Tree toggle", icon = "󰙅" },
     }
 
     local wk = require('which-key')
