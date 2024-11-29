@@ -115,7 +115,7 @@ require("lazy").setup({
   -- file finder
   require('plugin.telescope'),
   -- file navigator
-  require('config.nvim-tree'),
+  require('plugin.nvim-tree'),
   -- GitHub copilot
   -- require('config/copilot'),
   require('plugin.supermaven'),
