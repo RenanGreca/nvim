@@ -162,7 +162,7 @@ local config = function ()
   --     completeopt = 'menu,menuone,noinsert,noselect'
   --   },
   -- })
-  nvim_lsp.pyright.setup({
+  nvim_lsp.jedi_language_server.setup({
     on_attach = on_attach,
     capabilities = capabilities,
     filetypes = { 'python' }

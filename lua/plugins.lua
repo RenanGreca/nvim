@@ -132,6 +132,7 @@ require("lazy").setup({
   require('plugin.tabset'),
   require('plugin.harpoon'),
   require('plugin.dbtpal'),
+  require('plugin.toggleterm'),
 },
 -- ! what is the second parameter?
 {})
