@@ -96,9 +96,9 @@ local opts = {
       filetypes = { "swift" },
       root_dir = function(filename, _)
         return util.root_pattern("buildServer.json")(filename)
-          or util.root_pattern("*.xcodeproj", "*.xcworkspace")(filename)
-          or util.find_git_ancestor(filename)
-          or util.root_pattern("Package.swift")(filename)
+            or util.root_pattern("*.xcodeproj", "*.xcworkspace")(filename)
+            or util.find_git_ancestor(filename)
+            or util.root_pattern("Package.swift")(filename)
       end,
     },
     -- Go
@@ -119,6 +119,10 @@ local opts = {
     },
     ruff = {
       filetypes = { "python" },
+    },
+    -- YAML
+    yamlls = {
+      filetypes = { "yaml" },
     },
   },
 }
@@ -242,9 +246,9 @@ local config = function()
     filetypes = { "swift" },
     root_dir = function(filename, _)
       return util.root_pattern("buildServer.json")(filename)
-        or util.root_pattern("*.xcodeproj", "*.xcworkspace")(filename)
-        or util.find_git_ancestor(filename)
-        or util.root_pattern("Package.swift")(filename)
+          or util.root_pattern("*.xcodeproj", "*.xcworkspace")(filename)
+          or util.find_git_ancestor(filename)
+          or util.root_pattern("Package.swift")(filename)
     end,
   })
 
@@ -329,7 +333,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
 
     -- Status updates for LSP
-    { "j-hui/fidget.nvim", opts = {} },
+    { "j-hui/fidget.nvim",       opts = {} },
 
     "folke/neodev.nvim",
     "jose-elias-alvarez/typescript.nvim",

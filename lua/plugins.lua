@@ -34,6 +34,7 @@ require("lazy").setup(
     "navarasu/onedark.nvim",
     "2giosangmitom/nightfall.nvim",
     "arzg/vim-colors-xcode",
+    "neanias/everforest-nvim",
 
     -- Git
     -- ! What do these do?
