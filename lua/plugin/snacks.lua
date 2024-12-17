@@ -43,7 +43,7 @@ return {
     dim = { enabled = true },
     git = { enabled = true },
     indent = { enabled = true },
-    input = input,
+    -- input = input,
     notifier = { enabled = true },
     quickfile = { enabled = true },
     -- scroll = { enabled = true },
