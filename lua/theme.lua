@@ -10,6 +10,8 @@ local languages = {
   swift = "xcodedark",
   py = "onedark",
   lua = "onedark",
+  yaml = "everforest",
+  yml = "everforest",
 }
 
 for lang, theme in pairs(languages) do
