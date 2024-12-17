@@ -23,13 +23,19 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
 
 -- [[ Autoformat Python files on save ]]
-local format_python_group = vim.api.nvim_create_augroup("AutoFormat", {})
-vim.api.nvim_create_autocmd("BufWritePost", {
-  pattern = "*.py",
-  callback = function()
-    vim.cmd("silent !black --quiet %")
-    vim.cmd("edit")
-  end,
-  group = format_python_group
-})
+-- local format_python_group = vim.api.nvim_create_augroup("AutoFormat", {})
+-- vim.api.nvim_create_autocmd("BufWritePost", {
+--   pattern = "*.py",
+--   callback = function()
+--     vim.cmd("silent !black --quiet %")
+--     vim.cmd("edit")
+--   end,
+--   group = format_python_group
+-- })
 
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*",
+  callback = function(args)
+    require("conform").format({ bufnr = args.buf })
+  end,
+})

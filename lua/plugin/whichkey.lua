@@ -142,6 +142,14 @@ local vleader = {
       { "<leader>Fj", ":'<,'>!jq<cr>", desc = "  JSON" },
       { "<leader>l", group = "LSP" },
       { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action" },
+      { "<leader>y", '"+y', desc = "Copy to system clipboard", icon = "󰆏" },
+      { "<leader>C", group = "Clipboard", icon = "󰅌" },
+      { "<leader>CD", '"+D', desc = "Cut line to clipboard", icon = "󰆐" },
+      { "<leader>CP", '"+P', desc = "Paste from clipboard (before)", icon = "" },
+      { "<leader>CY", '"+Y', desc = "Copy line to clipboard", icon = "󰆏" },
+      { "<leader>Cd", '"+d', desc = "Cut to clipboard", icon = "󰆐" },
+      { "<leader>Cp", '"+p', desc = "Paste from clipboard", icon = "" },
+      { "<leader>Cy", '"+y', desc = "Copy to clipboard", icon = "󰆏" },
   },
 }
 -- local vleaderopts = {

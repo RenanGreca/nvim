@@ -3,34 +3,153 @@
 -- composer global require php-stubs/wordpress-globals php-stubs/wordpress-stubs php-stubs/woocommerce-stubs php-stubs/acf-pro-stubs wpsyntex/polylang-stubs php-stubs/genesis-stubs php-stubs/wp-cli-stubs
 -- local configs = require'lspconfig/configs'
 -- local util = require'lspconfig/util'
+vim.filetype.add({ extension = { templ = "templ" } })
+local icons = require("icons")
+
+local opts = {
+  diagnostics = {
+    underline = true,
+    update_in_insert = false,
+    virtual_text = {
+      spacing = 4,
+      source = "if_many",
+      prefix = "●",
+    },
+    severity_sort = true,
+    signs = {
+      text = {
+        [vim.diagnostic.severity.ERROR] = icons.diagnostics.Error,
+        [vim.diagnostic.severity.WARN] = icons.diagnostics.Warn,
+        [vim.diagnostic.severity.HINT] = icons.diagnostics.Hint,
+        [vim.diagnostic.severity.INFO] = icons.diagnostics.Info,
+      },
+    },
+  },
+  inlay_hints = {
+    enabled = true,
+    exclude = { "vue" }, -- filetypes for which you don't want to enable inlay hints
+  },
+  codelens = {
+    enabled = false,
+  },
+  capabilities = {
+    workspace = {
+      fileOperations = {
+        didRename = true,
+        willRename = true,
+      },
+    },
+  },
+  format = {
+    formatting_options = nil,
+    timeout_ms = nil,
+  },
+  servers = {
+    -- Lua
+    lua_ls = {
+      settings = {
+        Lua = {
+          diagnostics = {
+            globals = { "vim" },
+          },
+        },
+      },
+    },
+    -- TypeScript
+    ts_ls = {
+      filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+    },
+    -- PHP
+    intelephense = {
+      filetypes = { "php" },
+      settings = {
+        intelephense = {
+          stubs = {
+            "wordpress-globals",
+            "wp-cli",
+            "wordpress-stubs",
+          },
+          environment = {
+            phpVersion = "7.4.0",
+            composerJsonPath = "composer.json",
+            includePaths = "~/.composer/vendor/php-stubs/",
+          },
+        },
+      },
+    },
+    -- HTML
+    html = {
+      filetypes = { "html", "php", "htmlx", "gohtmltmpl" },
+    },
+    -- CSS
+    tailwindcss = {
+      filetypes = { "css" },
+      root_dir = function(filename, _)
+        return util.find_git_ancestor(filename)
+      end,
+    },
+    -- Swift
+    sourcekit = {
+      cmd = {
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp",
+      },
+      filetypes = { "swift" },
+      root_dir = function(filename, _)
+        return util.root_pattern("buildServer.json")(filename)
+          or util.root_pattern("*.xcodeproj", "*.xcworkspace")(filename)
+          or util.find_git_ancestor(filename)
+          or util.root_pattern("Package.swift")(filename)
+      end,
+    },
+    -- Go
+    gopls = {
+      filetypes = { "go", "gomod", "templ" },
+    },
+    -- Templ
+    templ = {
+      filetypes = { "templ", "html" },
+    },
+    -- Markdown
+    marksman = {
+      filetypes = { "markdown" },
+    },
+    -- Python
+    jedi_language_server = {
+      filetypes = { "python" },
+    },
+    ruff = {
+      filetypes = { "python" },
+    },
+  },
+}
 
 local on_attach = function(client, bufnr)
-  require 'lsp_signature'.on_attach({
+  require("lsp_signature").on_attach({
     bind = true,
     floating_window = true,
     handler_opts = {
-      border = "rounded"
-    }
+      border = "rounded",
+    },
   })
 
   if client.server_capabilities.documentHighlightProvider then
-    vim.api.nvim_create_augroup('lsp_document_highlight', {
-      clear = false
+    vim.api.nvim_create_augroup("lsp_document_highlight", {
+      clear = false,
     })
 
     vim.api.nvim_clear_autocmds({
       buffer = bufnr,
-      group = 'lsp_document_highlight',
+      group = "lsp_document_highlight",
     })
 
-    vim.api.nvim_create_autocmd({'CursorHold', 'CursorHoldI'}, {
-      group = 'lsp_document_highlight',
+    vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+      group = "lsp_document_highlight",
       buffer = bufnr,
       callback = vim.lsp.buf.document_highlight,
     })
 
-    vim.api.nvim_create_autocmd('CursorMoved', {
-      group = 'lsp_document_highlight',
+    vim.api.nvim_create_autocmd("CursorMoved", {
+      group = "lsp_document_highlight",
       buffer = bufnr,
       callback = vim.lsp.buf.clear_references,
     })
@@ -41,25 +160,27 @@ local on_attach = function(client, bufnr)
 end
 
 local capabilitiesfn = function()
-  local capabilities = require('cmp_nvim_lsp').default_capabilities()
-  capabilities.textDocument.foldingRange = {
-    dynamicRegistration = false,
-    lineFoldingOnly = true
-  }
-  capabilities.textDocument.completion.completionItem.snippetSupport = true
-  capabilities.textDocument.completion.completionItem.resolveSupport = {
-    properties = {'documentation', 'detail', 'additionalTextEdits',}
-  }
+  -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
+  -- capabilities.textDocument.foldingRange = {
+  --   dynamicRegistration = false,
+  --   lineFoldingOnly = true
+  -- }
+  -- capabilities.textDocument.completion.completionItem.snippetSupport = true
+  -- capabilities.textDocument.completion.completionItem.resolveSupport = {
+  --   properties = {'documentation', 'detail', 'additionalTextEdits',}
+  -- }
   -- capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
+  local capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+
   return capabilities
 end
 
-local config = function ()
+local config = function()
   require("mason").setup()
   require("mason-lspconfig").setup({})
 
-  local nvim_lsp = require 'lspconfig'
-  local util = require 'lspconfig.util'
+  local nvim_lsp = require("lspconfig")
+  local util = require("lspconfig.util")
   local capabilities = capabilitiesfn()
 
   nvim_lsp.lua_ls.setup({
@@ -68,22 +189,22 @@ local config = function ()
     settings = {
       Lua = {
         diagnostics = {
-          globals = {'vim'}
-        }
-      }
-    }
+          globals = { "vim" },
+        },
+      },
+    },
   })
 
   nvim_lsp.phpactor.setup({
     on_attach = on_attach,
     capabilities = capabilities,
-    filetypes = { 'php' }
+    filetypes = { "php" },
   })
 
   nvim_lsp.intelephense.setup({
     on_attach = on_attach,
     capabilities = capabilities,
-    filetypes = { 'php' },
+    filetypes = { "php" },
     settings = {
       intelephense = {
         stubs = {
@@ -94,22 +215,22 @@ local config = function ()
         environment = {
           phpVersion = "7.4.0",
           composerJsonPath = "composer.json",
-          includePaths = '~/.composer/vendor/php-stubs/'
+          includePaths = "~/.composer/vendor/php-stubs/",
         },
-      }
-    }
+      },
+    },
   })
 
   nvim_lsp.html.setup({
     on_attach = on_attach,
     capabilities = capabilities,
-    filetypes = { 'html', 'php', 'htmlx', 'gohtmltmpl' }
+    filetypes = { "html", "php", "htmlx", "gohtmltmpl" },
   })
 
   nvim_lsp.vtsls.setup({
     on_attach = on_attach,
     capabilities = capabilities,
-    filetypes = { 'typescript', 'javascript' }
+    filetypes = { "typescript", "javascript" },
   })
 
   nvim_lsp.sourcekit.setup({
@@ -118,42 +239,41 @@ local config = function ()
     cmd = {
       "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp",
     },
-    filetypes = { 'swift' },
+    filetypes = { "swift" },
     root_dir = function(filename, _)
       return util.root_pattern("buildServer.json")(filename)
         or util.root_pattern("*.xcodeproj", "*.xcworkspace")(filename)
         or util.find_git_ancestor(filename)
         or util.root_pattern("Package.swift")(filename)
-    end
+    end,
   })
 
   nvim_lsp.tailwindcss.setup({
     on_attach = on_attach,
     capabilities = capabilities,
-    filetypes = { 'css' },
+    filetypes = { "css" },
     root_dir = function(filename, _)
       return util.find_git_ancestor(filename)
-    end
+    end,
   })
 
   -- For Templ LSP, update treesitter version
-  vim.filetype.add({ extension = { templ = "templ" }})
+  vim.filetype.add({ extension = { templ = "templ" } })
   nvim_lsp.templ.setup({
     on_attach = on_attach,
     capabilities = capabilities,
-    filetypes = { 'templ', 'html' }
+    filetypes = { "templ", "html" },
   })
   nvim_lsp.gopls.setup({
     on_attach = on_attach,
     capabilities = capabilities,
-    filetypes = { 'go', 'templ' }
+    filetypes = { "go", "templ" },
   })
-
 
   nvim_lsp.marksman.setup({
     on_attach = on_attach,
     capabilities = capabilities,
-    filetypes = { 'markdown' }
+    filetypes = { "markdown" },
   })
 
   -- nvim_lsp.pylsp.setup_nvim_cmp({
@@ -165,9 +285,14 @@ local config = function ()
   nvim_lsp.jedi_language_server.setup({
     on_attach = on_attach,
     capabilities = capabilities,
-    filetypes = { 'python' }
+    filetypes = { "python" },
   })
 
+  nvim_lsp.ruff.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = { "python" },
+  })
   -- nvim_lsp.pylsp.setup({
   --   on_attach = on_attach,
   --   settings = {
@@ -187,7 +312,6 @@ local config = function ()
   --   capabilities = capabilities,
   --   filetypes = { 'css', 'scss', 'less', 'html', 'php' }
   -- })
-
 
   -- nvim_lsp.rust_analyzer.setup({
   --   on_attach = on_attach,
@@ -212,16 +336,22 @@ return {
 
     "mrcjkb/rustaceanvim",
     "ray-x/lsp_signature.nvim",
+    "saghen/blink.cmp",
   },
-  config = config,
-  opts = {
-    servers = {
-      tsserver = {},
-    },
-  },
+  -- config = config,
+  opts = opts,
+  config = function(_, opts)
+    local lspconfig = require("lspconfig")
+    for server, config in pairs(opts.servers) do
+      -- passing config.capabilities to blink.cmp merges with the capabilities in your
+      -- `opts[server].capabilities, if you've defined it
+      config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+      lspconfig[server].setup(config)
+    end
+  end,
   setup = {
     tsserver = function(_, opts)
-      require('typescript').setup({server = opts})
+      require("typescript").setup({ server = opts })
       return true
     end,
   },
