@@ -162,11 +162,26 @@ local config = function ()
   --     completeopt = 'menu,menuone,noinsert,noselect'
   --   },
   -- })
-  nvim_lsp.jedi_language_server.setup({
+  nvim_lsp.basedpyright.setup({
     on_attach = on_attach,
     capabilities = capabilities,
-    filetypes = { 'python' }
+    filetypes = { 'python' },
   })
+  -- nvim_lsp.diagnosticls.setup({
+  --   on_attach = on_attach,
+  --   capabilities = capabilities,
+  --   filetypes = { 'python' },
+  -- })
+  -- nvim_lsp.jedi_language_server.setup({
+  --   on_attach = on_attach,
+  --   capabilities = capabilities,
+  --   init_options = {
+  --     diagnostics = {
+  --       enable = true,
+  --     }
+  --   },
+  --   filetypes = { 'python' },
+  -- })
 
   -- nvim_lsp.pylsp.setup({
   --   on_attach = on_attach,

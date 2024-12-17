@@ -133,6 +133,8 @@ require("lazy").setup({
   require('plugin.harpoon'),
   require('plugin.dbtpal'),
   require('plugin.toggleterm'),
+  -- require('plugin.lint'),
+  -- require('plugin.diagnostic'),
 },
 -- ! what is the second parameter?
 {})
