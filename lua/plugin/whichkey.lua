@@ -1,4 +1,4 @@
-local icons = require('icons')
+local icons = require("icons")
 
 -- Several of these keymaps are based on those from LunarVim.
 -- https://github.com/LunarVim/LunarVim/blob/9ee3b7b8846d7ed2fa79f03d67083f8b95c897f2/lua/lvim/core/which-key.lua
@@ -87,7 +87,11 @@ local leader = {
   { "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Find Help" },
   { "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
   { "<leader>sl", "<cmd>Telescope resume<cr>", desc = "Resume last search" },
-  { "<leader>sp", "<cmd>lua require('telescope.builtin').colorscheme({enable_preview = true})<cr>", desc = "Colorscheme with Preview" },
+  {
+    "<leader>sp",
+    "<cmd>lua require('telescope.builtin').colorscheme({enable_preview = true})<cr>",
+    desc = "Colorscheme with Preview",
+  },
   { "<leader>sr", "<cmd>Telescope oldfiles<cr>", desc = "Open Recent File" },
   { "<leader>st", "<cmd>Telescope live_grep<cr>", desc = "Text" },
   { "<leader>w", group = "Window" },
@@ -97,6 +101,10 @@ local leader = {
   { "<leader>wj", "<C-w>j", desc = "  Move down" },
   { "<leader>wk", "<C-w>k", desc = "  Move up" },
   { "<leader>wl", "<C-w>l", desc = "  Move right" },
+  { "<leader><left>", "<C-w>h", desc = "  Move left" },
+  { "<leader><down>", "<C-w>j", desc = "  Move down" },
+  { "<leader><up>", "<C-w>k", desc = "  Move up" },
+  { "<leader><right>", "<C-w>l", desc = "  Move right" },
   { "<leader>ws", "<cmd>:split<cr>", desc = "Horizontal split", icon = "" },
   { "<leader>wv", "<cmd>:vsplit<cr>", desc = "Vertical split", icon = "" },
 }
@@ -136,20 +144,20 @@ local mappings = {
 -- }
 local vleader = {
   {
-      mode = { "v" },
-      { "<leader>/", "<Plug>(comment_toggle_linewise_visual)", desc = "Comment toggle linewise (visual)" },
-      { "<leader>F", group = " 󰉡 Format" },
-      { "<leader>Fj", ":'<,'>!jq<cr>", desc = "  JSON" },
-      { "<leader>l", group = "LSP" },
-      { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action" },
-      { "<leader>y", '"+y', desc = "Copy to system clipboard", icon = "󰆏" },
-      { "<leader>C", group = "Clipboard", icon = "󰅌" },
-      { "<leader>CD", '"+D', desc = "Cut line to clipboard", icon = "󰆐" },
-      { "<leader>CP", '"+P', desc = "Paste from clipboard (before)", icon = "" },
-      { "<leader>CY", '"+Y', desc = "Copy line to clipboard", icon = "󰆏" },
-      { "<leader>Cd", '"+d', desc = "Cut to clipboard", icon = "󰆐" },
-      { "<leader>Cp", '"+p', desc = "Paste from clipboard", icon = "" },
-      { "<leader>Cy", '"+y', desc = "Copy to clipboard", icon = "󰆏" },
+    mode = { "v" },
+    { "<leader>/", "<Plug>(comment_toggle_linewise_visual)", desc = "Comment toggle linewise (visual)" },
+    { "<leader>F", group = " 󰉡 Format" },
+    { "<leader>Fj", ":'<,'>!jq<cr>", desc = "  JSON" },
+    { "<leader>l", group = "LSP" },
+    { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action" },
+    { "<leader>y", '"+y', desc = "Copy to system clipboard", icon = "󰆏" },
+    { "<leader>C", group = "Clipboard", icon = "󰅌" },
+    { "<leader>CD", '"+D', desc = "Cut line to clipboard", icon = "󰆐" },
+    { "<leader>CP", '"+P', desc = "Paste from clipboard (before)", icon = "" },
+    { "<leader>CY", '"+Y', desc = "Copy line to clipboard", icon = "󰆏" },
+    { "<leader>Cd", '"+d', desc = "Cut to clipboard", icon = "󰆐" },
+    { "<leader>Cp", '"+p', desc = "Paste from clipboard", icon = "" },
+    { "<leader>Cy", '"+y', desc = "Copy to clipboard", icon = "󰆏" },
   },
 }
 -- local vleaderopts = {
@@ -167,32 +175,32 @@ local vmappings = {
 -- local vopts = {
 --     mode = "v"
 -- }
-  -- vim.api.nvim_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", { noremap = true, silent = true })
-  -- vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
 
 local config = function()
-    local wk = require('which-key')
-    wk.setup({
-        icons = {
-            breadcrumb = icons.ui.DoubleChevronRight,
-            separator = icons.ui.BoldArrowRight,
-            group = icons.ui.Plus,
-        },
-        win = {
-            border = "single", -- none, single, double, shadow
-            padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
-        }
-    })
-    wk.add(leader, {
-        mode = { "n" }
-    })
-    wk.add(vleader)
-    wk.add(mappings)
-    wk.add(vmappings)
-    -- wk.register(leader, leaderopts)
-    -- wk.register(vleader, vleaderopts)
-    -- wk.register(mappings, opts)
-    -- wk.register(vmappings, vopts)
+  local wk = require("which-key")
+  wk.setup({
+    icons = {
+      breadcrumb = icons.ui.DoubleChevronRight,
+      separator = icons.ui.BoldArrowRight,
+      group = icons.ui.Plus,
+    },
+    win = {
+      border = "single", -- none, single, double, shadow
+      padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
+    },
+  })
+  wk.add(leader, {
+    mode = { "n" },
+  })
+  wk.add(vleader)
+  wk.add(mappings)
+  wk.add(vmappings)
+  -- wk.register(leader, leaderopts)
+  -- wk.register(vleader, vleaderopts)
+  -- wk.register(mappings, opts)
+  -- wk.register(vmappings, vopts)
 end
 
 -- local wk = require('which-key')
@@ -211,12 +219,11 @@ end
 -- }
 -- }, { prefix = "<leader>" })
 
-
 return {
-    'folke/which-key.nvim',
-    opts = {},
-    config = config,
-    dependencies = {
-        'echasnovski/mini.icons',
-    },
+  "folke/which-key.nvim",
+  opts = {},
+  config = config,
+  dependencies = {
+    "echasnovski/mini.icons",
+  },
 }
