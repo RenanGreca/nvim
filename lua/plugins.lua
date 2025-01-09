@@ -118,21 +118,33 @@ require("lazy").setup(
     -- code autocompletion
     -- require('plugin.coc'),
 
+    -- Language helpers
     require("plugin.go"),
     require("plugin.rust"),
     require("plugin.pkl"),
     -- require('plugin.obsidian'),
     require("plugin.markdown"),
+
+    -- Unit test runner
     require("plugin.neotest"),
+    -- dbt helper commands
+    require("plugin.dbtpal"),
+
+    -- Vim command autocompletion
     require("plugin.wilder"),
     require("plugin.tabset"),
+
+    -- Mark and return to locations
     require("plugin.harpoon"),
-    require("plugin.dbtpal"),
-    require("plugin.toggleterm"),
+    -- require("plugin.toggleterm"),
+
+    -- Autoformatter
     require("plugin.conform"),
     -- require('plugin.indent'),
     require("plugin.snacks"),
     -- 'nathanaelkane/vim-indent-guides',
+    -- Quickfix and diagnostic toggler
+    require("plugin.trouble"),
   },
   -- ! what is the second parameter?
   {}
