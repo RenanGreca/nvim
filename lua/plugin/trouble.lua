@@ -43,7 +43,7 @@ return {
       },
       {
         "<leader>xq",
-        "<cmd>Trouble quickfix<cr>",
+        "<cmd>Trouble quickfix toggle<cr>",
         desc = "Quickfix",
         icon = icons.diagnostics.Question,
       },
