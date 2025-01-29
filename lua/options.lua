@@ -1,11 +1,11 @@
 -- Add any additional options here
--- see: 
+-- see:
 -- :help nvim.o
 -- :help nvim.opt
 
 vim.opt.colorcolumn = "120"
 vim.opt.textwidth = 120
-vim.opt.wrap = true
+vim.opt.wrap = false
 
 -- Set highlight on search
 vim.opt.hlsearch = true
@@ -16,7 +16,7 @@ vim.opt.relativenumber = true
 
 -- Enable mouse mode
 -- 'a' means 'all modes'; can se to n, v, i, etc.
-vim.o.mouse = 'a'
+vim.o.mouse = "a"
 
 -- Sync OS/neovim clipboard
 -- see :help clipboard
@@ -35,10 +35,9 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 -- Display signcolumn always
-vim.wo.signcolumn = 'yes'
+vim.wo.signcolumn = "yes"
 
-
--- Reduce update times 
+-- Reduce update times
 -- ! check documentation
 -- Time to save to swap
 vim.o.updatetime = 250
@@ -46,7 +45,7 @@ vim.o.updatetime = 250
 vim.o.timeoutlen = 300
 
 -- Better completions
-vim.o.completeopt = 'menuone,preview,noselect'
+vim.o.completeopt = "menuone,preview,noselect"
 
 -- Better colors, if terminal supports it
 -- vim.o.termguicolors = true

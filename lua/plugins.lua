@@ -33,7 +33,6 @@ require("lazy").setup(
     "Mofiqul/vscode.nvim",
     "navarasu/onedark.nvim",
     "2giosangmitom/nightfall.nvim",
-    "arzg/vim-colors-xcode",
     "neanias/everforest-nvim",
 
     -- Git
@@ -145,6 +144,7 @@ require("lazy").setup(
     -- 'nathanaelkane/vim-indent-guides',
     -- Quickfix and diagnostic toggler
     require("plugin.trouble"),
+    require("plugin.codecompanion"),
   },
   -- ! what is the second parameter?
   {}

@@ -1,8 +1,8 @@
--- local nvim_lsp = require 'lspconfig'
--- local util = require 'lspconfig.util'
+-- local nvim_lsp = require("lspconfig")
+-- local util = require("lspconfig.util")
 -- composer global require php-stubs/wordpress-globals php-stubs/wordpress-stubs php-stubs/woocommerce-stubs php-stubs/acf-pro-stubs wpsyntex/polylang-stubs php-stubs/genesis-stubs php-stubs/wp-cli-stubs
 -- local configs = require'lspconfig/configs'
--- local util = require'lspconfig/util'
+-- local util = require("lspconfig/util")
 vim.filetype.add({ extension = { templ = "templ" } })
 local icons = require("icons")
 
@@ -85,6 +85,7 @@ local opts = {
     tailwindcss = {
       filetypes = { "css" },
       root_dir = function(filename, _)
+        local util = require("lspconfig.util")
         return util.find_git_ancestor(filename)
       end,
     },
@@ -95,15 +96,16 @@ local opts = {
       },
       filetypes = { "swift" },
       root_dir = function(filename, _)
+        local util = require("lspconfig.util")
         return util.root_pattern("buildServer.json")(filename)
-            or util.root_pattern("*.xcodeproj", "*.xcworkspace")(filename)
-            or util.find_git_ancestor(filename)
-            or util.root_pattern("Package.swift")(filename)
+          or util.root_pattern("*.xcodeproj", "*.xcworkspace")(filename)
+          or util.find_git_ancestor(filename)
+          or util.root_pattern("Package.swift")(filename)
       end,
     },
     -- Go
     gopls = {
-      filetypes = { "go", "gomod", "templ" },
+      filetypes = { "go", "gomod" },
     },
     -- Templ
     templ = {
@@ -246,9 +248,9 @@ local config = function()
     filetypes = { "swift" },
     root_dir = function(filename, _)
       return util.root_pattern("buildServer.json")(filename)
-          or util.root_pattern("*.xcodeproj", "*.xcworkspace")(filename)
-          or util.find_git_ancestor(filename)
-          or util.root_pattern("Package.swift")(filename)
+        or util.root_pattern("*.xcodeproj", "*.xcworkspace")(filename)
+        or util.find_git_ancestor(filename)
+        or util.root_pattern("Package.swift")(filename)
     end,
   })
 
@@ -333,7 +335,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
 
     -- Status updates for LSP
-    { "j-hui/fidget.nvim",       opts = {} },
+    { "j-hui/fidget.nvim", opts = {} },
 
     "folke/neodev.nvim",
     "jose-elias-alvarez/typescript.nvim",
@@ -344,18 +346,18 @@ return {
   },
   -- config = config,
   opts = opts,
-  config = function(_, opts)
+  config = function(_, opt)
     local lspconfig = require("lspconfig")
-    for server, config in pairs(opts.servers) do
+    for server, cfg in pairs(opt.servers) do
       -- passing config.capabilities to blink.cmp merges with the capabilities in your
       -- `opts[server].capabilities, if you've defined it
-      config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
-      lspconfig[server].setup(config)
+      cfg.capabilities = require("blink.cmp").get_lsp_capabilities(cfg.capabilities)
+      lspconfig[server].setup(cfg)
     end
   end,
   setup = {
-    tsserver = function(_, opts)
-      require("typescript").setup({ server = opts })
+    tsserver = function(_, opt)
+      require("typescript").setup({ server = opt })
       return true
     end,
   },
