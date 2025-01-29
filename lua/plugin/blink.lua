@@ -13,9 +13,18 @@ return {
     keymap = {
       preset = "default",
       ["<Tab>"] = {
+        -- function(cmp)
+        --   cmp.accept({ index = 1 })
+        -- end,
         function(cmp)
-          cmp.accept({ index = 1 })
+          if cmp.snippet_active() then
+            return cmp.accept({ index = 1 })
+          else
+            return cmp.select_and_accept()
+          end
         end,
+        'snippet_forward',
+        'fallback'
       },
     },
     appearance = {
