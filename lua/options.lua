@@ -3,8 +3,8 @@
 -- :help nvim.o
 -- :help nvim.opt
 
-vim.opt.colorcolumn = "120"
-vim.opt.textwidth = 120
+vim.opt.colorcolumn = "90"
+vim.opt.textwidth = 90
 vim.opt.wrap = false
 
 -- Set highlight on search

@@ -145,6 +145,7 @@ require("lazy").setup(
     -- Quickfix and diagnostic toggler
     require("plugin.trouble"),
     require("plugin.codecompanion"),
+    require("plugin.wrapping"),
   },
   -- ! what is the second parameter?
   {}

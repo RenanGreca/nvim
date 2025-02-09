@@ -77,6 +77,11 @@ local leader = {
   { "<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Document Symbols" },
   { "<leader>lw", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
   { "<leader>s", group = "Search" },
+  {
+    "<leader>ss",
+    [[:%s/<C-r><C-w>/]],
+    desc = "Substitute word",
+  },
   { "<leader>sC", "<cmd>Telescope commands<cr>", desc = "Commands" },
   { "<leader>sH", "<cmd>Telescope highlights<cr>", desc = "Find highlight groups" },
   { "<leader>sM", "<cmd>Telescope man_pages<cr>", desc = "Man Pages" },
@@ -158,6 +163,11 @@ local vleader = {
     { "<leader>Cd", '"+d', desc = "Cut to clipboard", icon = "󰆐" },
     { "<leader>Cp", '"+p', desc = "Paste from clipboard", icon = "" },
     { "<leader>Cy", '"+y', desc = "Copy to clipboard", icon = "󰆏" },
+    {
+      "<leader>ss",
+      [[:%s/<C-r><C-w>/]],
+      desc = "Substitute word",
+    },
   },
 }
 -- local vleaderopts = {

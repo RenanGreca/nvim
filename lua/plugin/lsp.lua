@@ -91,10 +91,11 @@ local opts = {
     },
     -- Swift
     sourcekit = {
-      cmd = {
-        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp",
-      },
-      filetypes = { "swift" },
+      -- cmd = {
+      --   "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp",
+      -- },
+      cmd = { "xcrun", "sourcekit-lsp" },
+      filetypes = { "swift", "c", "cpp", "objective-c" },
       root_dir = function(filename, _)
         local util = require("lspconfig.util")
         return util.root_pattern("buildServer.json")(filename)
@@ -109,7 +110,7 @@ local opts = {
     },
     -- Templ
     templ = {
-      filetypes = { "templ", "html" },
+      filetypes = { "templ" },
     },
     -- Markdown
     marksman = {
