@@ -98,6 +98,14 @@ require("lazy").setup(
           "html",
         },
       },
+      setup = function()
+        require("config.treesitter.configs").setup {
+          indent = {
+            enable = true,
+            disable = { "yaml" },
+          },
+        }
+      end,
     },
 
     -- WhichKey & related keymaps
