@@ -2,6 +2,7 @@ local function config()
   require('telescope').setup {
     defaults = {
       layout_strategy = 'vertical',
+      hidden = true,
       mappings = {
         i = {
           ['<C-u>'] = false,
@@ -22,7 +23,8 @@ local function config()
   --     },
   -- }
   local keymaps = {
-    { "<leader>f", builtin.find_files, desc = "Find File", icon = "󰈞" },
+    -- { "<leader>f", builtin.find_files, desc = "Find File", icon = "󰈞" },
+    { "<leader>f", "<cmd>Telescope find_files hidden=true<cr>", desc = "Find File", icon = "󰈞" },
   }
 
   local wk = require('which-key')
