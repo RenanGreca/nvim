@@ -5,6 +5,7 @@ local languages = {
   js = "vscode",
   json = "vscode",
   css = "vscode",
+  ts = "vscode",
   go = "catppuccin-mocha",
   templ = "catppuccin-mocha",
   swift = "everforest",
