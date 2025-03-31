@@ -1,0 +1,14 @@
+{
+  "macros": [
+    {
+      "name": ".env to secrets.yaml",
+      "raw": "X3ZmPYD9NXV2Zj2A/TU6cy9cJVZfXCVWLy0vZw1mPYD9NWGAa2I6IBuAa2Q=",
+      "content": "_vf=<Ignore>uvf=<Ignore>:s/\\%V_\\%V/-/g<CR>f=<Ignore>a<BS>:<Space><Esc><Down>"
+    },
+    {
+      "name": ".env to config.yaml (save secret-id to \"a before using)",
+      "raw": "X3Z0PYD9NXlPgGtiLSBzZXJjZYBrYoBrYoBrYmNyZXQtaWQ6IBsiYXBvbmFtZTogG3Bva2V5OiAbcGJ2JHV2JDpzL1wlVl9cJVYvLS9nDYBrZGRkZGQ=",
+      "content": "_vt=<Ignore>yO<BS>-<Space>secret-id:<Space><Esc>\"aponame:<Space><Esc>pokey:<Space><Esc>pbv$uv$:s/\\%V_\\%V/-/g<CR><Down>dddd"
+    }
+  ]
+}

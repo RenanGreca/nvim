@@ -99,12 +99,12 @@ require("lazy").setup(
         },
       },
       setup = function()
-        require("config.treesitter.configs").setup {
+        require("config.treesitter.configs").setup({
           indent = {
             enable = true,
             disable = { "yaml" },
           },
-        }
+        })
       end,
     },
 
@@ -154,6 +154,8 @@ require("lazy").setup(
     require("plugin.trouble"),
     require("plugin.codecompanion"),
     require("plugin.wrapping"),
+
+    require("plugin.macros"),
   },
   -- ! what is the second parameter?
   {}
