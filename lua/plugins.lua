@@ -123,7 +123,7 @@ require("lazy").setup(
     -- GitHub copilot
     -- require('config/copilot'),
     -- code autocompletion
-    -- require('plugin.coc'),
+    require('plugin.coc'),
 
     -- Language helpers
     require("plugin.go"),
@@ -139,7 +139,7 @@ require("lazy").setup(
 
     -- Vim command autocompletion
     require("plugin.wilder"),
-    require("plugin.tabset"),
+    -- require("plugin.tabset"),
 
     -- Mark and return to locations
     require("plugin.harpoon"),

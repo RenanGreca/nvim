@@ -10,7 +10,15 @@ return {
                 go = {
                     tabwidth = 4,
                     expandtab = false,
-                }
+                },
+                make = {
+                    tabwidth = 4,
+                    expandtab = false,
+                },
+                yaml = {
+                    tabwidth = 2,
+                    expandtab = true,
+                },
             }
         })
     end

@@ -5,7 +5,9 @@ require("options")
 require("autocmds")
 require("theme")
 
-vim.g.python3_host_prog = "/Users/renangreca/.pyenv/shims/python"
+-- vim.g.python3_host_prog = "/Users/renangreca/.pyenv/shims/python"
+-- vim.o.filetype = 'plugin on'
+-- vim.cmd('filetype plugin on')
 
 if vim.g.vscode then
   -- VSCode extension

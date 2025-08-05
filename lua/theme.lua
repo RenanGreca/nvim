@@ -13,6 +13,7 @@ local languages = {
   lua = "onedark",
   yaml = "everforest",
   yml = "everforest",
+  make = "lunaperche",
 }
 
 for lang, theme in pairs(languages) do

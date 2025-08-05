@@ -99,9 +99,9 @@ local opts = {
       root_dir = function(filename, _)
         local util = require("lspconfig.util")
         return util.root_pattern("buildServer.json")(filename)
-          or util.root_pattern("*.xcodeproj", "*.xcworkspace")(filename)
-          or util.find_git_ancestor(filename)
-          or util.root_pattern("Package.swift")(filename)
+            or util.root_pattern("*.xcodeproj", "*.xcworkspace")(filename)
+            or util.find_git_ancestor(filename)
+            or util.root_pattern("Package.swift")(filename)
       end,
     },
     -- Go
@@ -249,9 +249,9 @@ local config = function()
     filetypes = { "swift" },
     root_dir = function(filename, _)
       return util.root_pattern("buildServer.json")(filename)
-        or util.root_pattern("*.xcodeproj", "*.xcworkspace")(filename)
-        or util.find_git_ancestor(filename)
-        or util.root_pattern("Package.swift")(filename)
+          or util.root_pattern("*.xcodeproj", "*.xcworkspace")(filename)
+          or util.find_git_ancestor(filename)
+          or util.root_pattern("Package.swift")(filename)
     end,
   })
 
@@ -332,8 +332,33 @@ return {
   "neovim/nvim-lspconfig",
   dependencies = {
     -- LSP installer/updater
-    { "williamboman/mason.nvim", config = true },
+    {
+      "williamboman/mason.nvim",
+      config = true,
+    },
     "williamboman/mason-lspconfig.nvim",
+
+    { 
+      "WhoIsSethDaniel/mason-tool-installer.nvim",
+      config = function()
+        require("mason-tool-installer").setup({
+          ensure_installed = {
+          "bash-language-server",
+          "gopls",
+          "html-lsp",
+          "jedi-language-server",
+          "lua-language-server",
+          "marksman",
+          "ruff",
+          "shfmt",
+          "sqlfluff",
+          "stylua",
+          "typescript-language-server",
+          "yaml-language-server",
+          },
+        })
+      end,
+    },
 
     -- Status updates for LSP
     { "j-hui/fidget.nvim", opts = {} },

@@ -33,9 +33,20 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 --   group = format_python_group
 -- })
 
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*",
-  callback = function(args)
-    require("conform").format({ bufnr = args.buf })
-  end,
-})
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+--   pattern = "*",
+--   callback = function(args)
+--     require("conform").format({ bufnr = args.buf })
+--   end,
+-- })
+
+-- [[ Disable expandtab for makefiles ]]
+-- local make_group = vim.api.nvim_create_augroup("MakeExpandTab", { clear = true })
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = "make",
+--   callback = function()
+--     -- vim.cmd("set noexpandtab")
+--     vim.opt_local.expandtab = false
+--   end,
+--   group = make_group,
+-- })
