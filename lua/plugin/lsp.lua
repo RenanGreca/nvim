@@ -167,7 +167,9 @@ local on_attach = function(client, bufnr)
 end
 
 local capabilitiesfn = function()
-  -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
+  local capabilities = require('cmp_nvim_lsp').default_capabilities()
+  return capabilities
+
   -- capabilities.textDocument.foldingRange = {
   --   dynamicRegistration = false,
   --   lineFoldingOnly = true
@@ -177,9 +179,9 @@ local capabilitiesfn = function()
   --   properties = {'documentation', 'detail', 'additionalTextEdits',}
   -- }
   -- capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
-  local capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+  -- local capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
 
-  return capabilities
+  -- return capabilities
 end
 
 local config = function()
@@ -368,7 +370,7 @@ return {
 
     "mrcjkb/rustaceanvim",
     "ray-x/lsp_signature.nvim",
-    "saghen/blink.cmp",
+    -- "saghen/blink.cmp",
   },
   -- config = config,
   opts = opts,
@@ -377,8 +379,11 @@ return {
     for server, cfg in pairs(opt.servers) do
       -- passing config.capabilities to blink.cmp merges with the capabilities in your
       -- `opts[server].capabilities, if you've defined it
-      cfg.capabilities = require("blink.cmp").get_lsp_capabilities(cfg.capabilities)
-      lspconfig[server].setup(cfg)
+      -- cfg.capabilities = require("blink.cmp").get_lsp_capabilities(cfg.capabilities)
+      local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+      lspconfig[server].setup({
+        capabilities = capabilities,
+      })
     end
   end,
   setup = {

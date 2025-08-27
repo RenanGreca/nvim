@@ -15,4 +15,14 @@ return {
     })
   end
 }
-
+--
+-- return {
+--   "github/copilot.vim",
+--   event = "InsertEnter",
+--   dependencies = {
+--     'zbirenbaum/copilot-cmp',
+--     config = function()
+--       require('copilot_cmp').setup()
+--     end
+--   },
+-- }

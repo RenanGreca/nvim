@@ -111,9 +111,10 @@ require("lazy").setup(
     -- WhichKey & related keymaps
     require("plugin.whichkey"),
     -- Autocompletion
-    -- require("plugin.nvim-cmp"),
-    require("plugin.blink"),
-    require("plugin.supermaven"),
+    require("plugin.nvim-cmp"),
+    -- require("plugin.blink"),
+    -- require('plugin.coc'),
+    -- require("plugin.supermaven"),
     -- LSP
     require("plugin.lsp"),
     -- file finder
@@ -121,9 +122,7 @@ require("lazy").setup(
     -- file navigator
     require("plugin.nvim-tree"),
     -- GitHub copilot
-    -- require('config/copilot'),
-    -- code autocompletion
-    require('plugin.coc'),
+    require('plugin.copilot'),
 
     -- Language helpers
     require("plugin.go"),

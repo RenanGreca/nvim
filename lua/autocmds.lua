@@ -1,4 +1,5 @@
 -- Add any additional autocmds here
+-- s:::
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`

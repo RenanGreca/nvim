@@ -45,7 +45,8 @@ vim.o.updatetime = 250
 vim.o.timeoutlen = 300
 
 -- Better completions
-vim.o.completeopt = "menuone,preview,noselect"
+-- vim.o.completeopt = "menuone,preview,noselect"
+vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
 -- Better colors, if terminal supports it
 -- vim.o.termguicolors = true

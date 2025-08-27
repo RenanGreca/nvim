@@ -1,20 +1,27 @@
 return {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
-    version = false,
+    event = 'InsertEnter',
     dependencies = {
-        -- autocompletes from LSP
-        'hrsh7th/cmp-nvim-lsp',
-        -- auto-hints for above
-        'hrsh7th/cmp-nvim-lsp-signature-help',
-        -- autocompletes file paths
-        'hrsh7th/cmp-path',
-        -- autocompletes from buffer
-        'hrsh7th/cmp-buffer',
-        'hrsh7th/cmp-cmdline',
-        'onsails/lspkind.nvim',
-
-        'rafamadriz/friendly-snippets',
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-nvim-lsp-signature-help',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-buffer',
+      'onsails/lspkind.nvim',
+      'L3MON4D3/LuaSnip',
+      'saadparwaiz1/cmp_luasnip',
+      'hrsh7th/cmp-cmdline',
+        -- -- autocompletes from LSP
+        -- 'hrsh7th/cmp-nvim-lsp',
+        -- -- auto-hints for above
+        -- 'hrsh7th/cmp-nvim-lsp-signature-help',
+        -- -- autocompletes file paths
+        -- 'hrsh7th/cmp-path',
+        -- -- autocompletes from buffer
+        -- 'hrsh7th/cmp-buffer',
+        -- 'onsails/lspkind.nvim',
+        --
+        -- 'rafamadriz/friendly-snippets',
     },
     config = function()
         local cmp = require("cmp")
@@ -27,7 +34,8 @@ return {
                 end,
             },
             sources = {
-                { name = "supermaven" },
+                -- { name = "supermaven" },
+                { name = "copilot" },
                 { name = "nvim_lsp" },
                 -- { name = "nvim_lsp_signature_help" },
                 { name = "path" },
@@ -64,7 +72,7 @@ return {
                 fields = { "kind", "abbr", "menu" },
                 format = function(entry, vim_item)
                     local custom_menu_icon = {
-                        supermaven = "",
+                        copilot = "",
                     }
                     local kind = lspkind.cmp_format({
                         mode = "symbol_text",
@@ -73,11 +81,11 @@ return {
                             nvim_lsp = "[L]",
                             nvim_lua = "[S]",
                             path = "[P]",
-                            supermaven = "[C]",
+                            copilot = "[C]",
                         })
                     })(entry, vim_item)
-                    if entry.source.name == "supermaven" then
-                        kind.kind = string.format("%s %s", custom_menu_icon.supermaven, "Copilot")
+                    if entry.source.name == "copilot" then
+                        kind.kind = string.format("%s %s", custom_menu_icon.copilot, "Copilot")
                     end
                     local strings = vim.split(kind.kind, "%s", { trimempty=true })
                     kind.kind = strings[1]
