@@ -46,6 +46,7 @@ return {
             mapping = cmp.mapping.preset.insert({
                 -- select completion with "enter"
                 ["<CR>"] = cmp.mapping.confirm({ select = false }),
+                ["<C-a>"] = cmp.mapping.confirm({ select = true }),
                 -- page down/up
                 ["<C-d>"] = cmp.mapping.scroll_docs(-4),
                 ["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -53,14 +54,14 @@ return {
                 ["<C-Space>"] = cmp.mapping.complete(),
                 ["<C-e>"] = cmp.mapping.close(),
                 -- browse through completion items
-                -- ["<Tab>"] = cmp.mapping(function(fallback)
+                -- ["<C-a>"] = cmp.mapping(function(fallback)
                 --     if cmp.visible() then
                 --         cmp.select_next_item()
                 --     else
                 --         fallback()
                 --     end
                 -- end, { "i", "s" }),
-                -- ["<S-Tab>"] = cmp.mapping(function(fallback)
+                -- ["<S-C-a>"] = cmp.mapping(function(fallback)
                 --     if cmp.visible() then
                 --         cmp.select_prev_item()
                 --     else
