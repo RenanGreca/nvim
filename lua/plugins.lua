@@ -114,7 +114,7 @@ require("lazy").setup(
     require("plugin.nvim-cmp"),
     -- require("plugin.blink"),
     -- require('plugin.coc'),
-    -- require("plugin.supermaven"),
+    require("plugin.supermaven"),
     -- LSP
     require("plugin.lsp"),
     -- file finder
@@ -122,7 +122,7 @@ require("lazy").setup(
     -- file navigator
     require("plugin.nvim-tree"),
     -- GitHub copilot
-    require('plugin.copilot'),
+    -- require('plugin.copilot'),
 
     -- Language helpers
     require("plugin.go"),
@@ -152,7 +152,7 @@ require("lazy").setup(
     -- Quickfix and diagnostic toggler
     require("plugin.trouble"),
     require("plugin.codecompanion"),
-    require("plugin.wrapping"),
+    -- require("plugin.wrapping"),
 
     require("plugin.macros"),
   },
