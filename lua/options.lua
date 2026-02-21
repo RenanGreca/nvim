@@ -3,9 +3,14 @@
 -- :help nvim.o
 -- :help nvim.opt
 
+-- Soft wrap at 90 characters
+-- Do not hard wrap
 vim.opt.colorcolumn = "90"
-vim.opt.textwidth = 90
-vim.opt.wrap = false
+vim.opt.wrap = true              -- Turn on soft wrap
+vim.opt.linebreak = true         -- Don't break words in the middle
+vim.opt.breakindent = true       -- Wrapped lines keep the same indent level
+vim.opt.textwidth = 0           -- Ensure NO hard breaks are inserted
+-- vim.opt.columns = 90
 
 -- Set highlight on search
 vim.opt.hlsearch = true

@@ -146,14 +146,14 @@ require("lazy").setup(
     -- require("plugin.toggleterm"),
 
     -- Autoformatter
-    require("plugin.conform"),
+    -- require("plugin.conform"),
     -- require('plugin.indent'),
     require("plugin.snacks"),
     -- 'nathanaelkane/vim-indent-guides',
     -- Quickfix and diagnostic toggler
     require("plugin.trouble"),
     require("plugin.codecompanion"),
-    require("plugin.wrapping"),
+    -- require("plugin.wrapping"),
 
     require("plugin.macros"),
   },
