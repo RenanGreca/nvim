@@ -73,11 +73,11 @@ require("lazy").setup(
         },
       },
     },
-    {
-      -- Comment/uncomment shortcut
-      "numToStr/Comment.nvim",
-      opts = {},
-    },
+    -- {
+    --   -- Comment/uncomment shortcut
+    --   "numToStr/Comment.nvim",
+    --   opts = {},
+    -- },
 
     {
       -- Syntax highlighting and code navigation
@@ -156,6 +156,7 @@ require("lazy").setup(
     -- require("plugin.wrapping"),
 
     require("plugin.macros"),
+    require("plugin.copilotchat"),
   },
   -- ! what is the second parameter?
   {}
