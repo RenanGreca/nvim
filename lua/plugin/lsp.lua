@@ -84,9 +84,10 @@ local opts = {
     -- CSS
     tailwindcss = {
       filetypes = { "css" },
-      root_dir = function(filename, _)
+      root_dir = function(bufnr, on_dir)
         local util = require("lspconfig.util")
-        return util.find_git_ancestor(filename)
+        local filename = vim.api.nvim_buf_get_name(bufnr)
+        on_dir(util.find_git_ancestor(filename))
       end,
     },
     -- Swift
@@ -96,12 +97,15 @@ local opts = {
       -- },
       cmd = { "xcrun", "sourcekit-lsp" },
       filetypes = { "swift", "c", "cpp", "objective-c" },
-      root_dir = function(filename, _)
+      root_dir = function(bufnr, on_dir)
         local util = require("lspconfig.util")
-        return util.root_pattern("buildServer.json")(filename)
+        local filename = vim.api.nvim_buf_get_name(bufnr)
+        on_dir(
+          util.root_pattern("buildServer.json")(filename)
             or util.root_pattern("*.xcodeproj", "*.xcworkspace")(filename)
             or util.find_git_ancestor(filename)
             or util.root_pattern("Package.swift")(filename)
+        )
       end,
     },
     -- Go
@@ -176,13 +180,17 @@ return {
   -- config = config,
   opts = opts,
   config = function(_, opt)
-    local lspconfig = require("lspconfig")
+    -- Use the native vim.lsp.config()/vim.lsp.enable() API (nvim >= 0.11)
+    -- instead of the deprecated `require("lspconfig")[server].setup()` framework.
+    local servers = {}
     for server, cfg in pairs(opt.servers) do
       -- passing config.capabilities to blink.cmp merges with the capabilities in your
       -- `opts[server].capabilities, if you've defined it
       cfg.capabilities = require("blink.cmp").get_lsp_capabilities(cfg.capabilities)
-      lspconfig[server].setup(cfg)
+      vim.lsp.config(server, cfg)
+      table.insert(servers, server)
     end
+    vim.lsp.enable(servers)
   end,
   setup = {
     tsserver = function(_, opt)
