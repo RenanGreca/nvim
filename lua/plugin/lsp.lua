@@ -171,7 +171,6 @@ return {
     { "j-hui/fidget.nvim", opts = {} },
 
     "folke/neodev.nvim",
-    "jose-elias-alvarez/typescript.nvim",
 
     "mrcjkb/rustaceanvim",
     -- "ray-x/lsp_signature.nvim",
@@ -192,10 +191,4 @@ return {
     end
     vim.lsp.enable(servers)
   end,
-  setup = {
-    tsserver = function(_, opt)
-      require("typescript").setup({ server = opt })
-      return true
-    end,
-  },
 }
