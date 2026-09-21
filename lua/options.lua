@@ -53,4 +53,17 @@ vim.o.timeoutlen = 300
 vim.o.completeopt = "menuone,preview,noselect"
 
 -- Better colors, if terminal supports it
--- vim.o.termguicolors = true
+vim.o.termguicolors = true
+
+-- Enable the display of invisible characters
+vim.opt.list = true
+
+-- Define which characters to use for whitespace
+vim.opt.listchars = {
+  tab = '▸ ',    -- Shows ▸ followed by a space for tabs
+  -- space = '⋅',   -- Shows ⋅ for spaces
+  lead = '⋅',    -- Shows ⋅ ONLY for spaces at the start of a line
+  trail = '✗',   -- Shows ✗ for trailing spaces (optional but helpful)
+  -- eol = '↲',     -- Shows ↲ at the end of a line (optional)
+  nbsp = '␣'     -- Shows ␣ for non-breaking spaces
+}
