@@ -73,11 +73,11 @@ require("lazy").setup(
         },
       },
     },
-    {
-      -- Comment/uncomment shortcut
-      "numToStr/Comment.nvim",
-      opts = {},
-    },
+    -- {
+    --   -- Comment/uncomment shortcut
+    --   "numToStr/Comment.nvim",
+    --   opts = {},
+    -- },
 
     {
       -- Syntax highlighting and code navigation
